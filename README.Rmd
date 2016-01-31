@@ -1,0 +1,19 @@
+---
+title: "README"
+output: html_document
+---
+
+The function *run_analysis()* contained in **run_analysis.R** returns a list containing two data sets: 
+
+- full_data
+- summarized_data
+
+The function downloads a zip file from:
+
+*https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip*
+
+The file is unziped and then the working directory is changed to the that of file set unziped.  The script generates a dataframe with the test and training data combined and activity and subject ids joined.  Columns not related to a "Mean" or "Std" are dropped.  
+
+From that data set, a data table is crafted that groups by Subject id and activity and averages the 86 remaining columns.
+
+Function returns a list that contains both data sets.

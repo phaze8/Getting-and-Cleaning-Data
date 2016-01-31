@@ -1,0 +1,23 @@
+---
+title: "CodeBook"
+output: html_document
+---
+
+The function *run_analysis()* contained in **run_analysis.R** returns a list containing two data sets: 
+
+- full_data
+- summarized_data
+
+```{r}
+source('~/Documents/DataScienceTrack/UCI HAR Dataset/run_analysis.R', encoding = 'UTF-8')
+results <- run_analysis()
+summary(results)
+```
+
+The script combines the *Y* test/train data and *Subject* test/train to the *X* test/train data (respectfully).  Then the joined *train* data set is unioned with the *test* data set.  The activity idenification numbers are replaced with the activity name.  Features listed in *feature.txt* are matched to the appropriate column and used as the column name.  Only features with "[Mm]ean" or "[Ss]td" in the text string were kept in the data set.
+
+There are 88 columns in each data set.  The first column is the subject idenitifcation number and the second column is the observed activity.  The remaining 86 columns in the **full_data** data set represent the mean or standard deviation dervived while observing the subject doing the activity for a single observation.  The remaining 86 columns in the **summarized_data** data set represent the average of all of that subject’s observations doing that activity.
+
+```{r}
+colnames(results$full_data)
+```
